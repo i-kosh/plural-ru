@@ -56,6 +56,13 @@ describe('plural-ru', function() {
         assert.equal(many, plural.noun(-5, one, several, many));
     });
 
+    it('Throw an error if not enough arguments', function() {
+        assert.throw(() => plural.noun(1))
+        assert.throw(() => plural.noun(1, 'one'))
+        assert.doesNotThrow(() => plural.noun(1, 'one', 'two'))
+        assert.doesNotThrow(() => plural.noun(1, 'one', 'two', 'three'))
+    })
+
     it('Templating', function () {
         const one = '%d файл %d';
         const several = '%d файла %d';

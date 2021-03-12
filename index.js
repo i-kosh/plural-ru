@@ -9,9 +9,11 @@ function getPluralNoun(num) {
     var absNum = Math.abs(num)
 
     switch (forms.length) {
+        case 0:
+            throw new Error('"forms" argument is required')
+        
         case 1:
             throw new Error('Not enough forms');
-            break;
 
         case 2:
             str = absNum > 1 ? forms[1] : forms[0];
