@@ -23,6 +23,9 @@ describe('plural-ru', function() {
         assert.equal(many, plural(2, one, many, many));
         assert.equal(many, plural(3, one, many, many));
         assert.equal(one, plural(21, one, many, many));
+        assert.equal(one, plural(-1, one, many, many));
+        assert.equal(many, plural(-2, one, many, many));
+        assert.equal(many, plural(-10, one, many, many));
     });
 
     it('Several and many', function() {
@@ -34,6 +37,9 @@ describe('plural-ru', function() {
         assert.equal(several, plural(3, one, several, many));
         assert.equal(several, plural(4, one, several, many));
         assert.equal(many, plural(5, one, several, many));
+        assert.equal(one, plural(-1, one, several, many));
+        assert.equal(several, plural(-2, one, several, many));
+        assert.equal(many, plural(-5, one, several, many));
     });
 
     it('Several and many (noun)', function() {
@@ -45,6 +51,9 @@ describe('plural-ru', function() {
         assert.equal(several, plural.noun(3, one, several, many));
         assert.equal(several, plural.noun(4, one, several, many));
         assert.equal(many, plural.noun(5, one, several, many));
+        assert.equal(one, plural.noun(-1, one, several, many));
+        assert.equal(several, plural.noun(-2, one, several, many));
+        assert.equal(many, plural.noun(-5, one, several, many));
     });
 
     it('Templating', function () {
@@ -60,6 +69,11 @@ describe('plural-ru', function() {
         assert.equal('101 файл 101', plural(101, one, several, many));
         assert.equal('110 файлов 110', plural(110, one, several, many));
         assert.equal('1000000 файлов 1000000', plural(1000000, one, several, many));
+        assert.equal('-1 файл -1', plural(-1, one, several, many));
+        assert.equal('-2 файла -2', plural(-2, one, several, many));
+        assert.equal('-5 файлов -5', plural(-5, one, several, many));
+        assert.equal('-1001 файл -1001', plural(-1001, one, several, many));
+
     });
 
     it('Several and many (verb)', function() {
@@ -91,5 +105,9 @@ describe('plural-ru', function() {
         assert.equal('Нашлось 10000', plural.verb(10000, one, several, many));
         assert.equal('Нашлось 1000000', plural.verb(1000000, one, several, many));
         assert.equal('Нашлось 1001000', plural.verb(1001000, one, several, many));
+        assert.equal('Нашлась -1', plural.verb(-1, one, several, many));
+        assert.equal('Нашлись -3', plural.verb(-3, one, several, many));
+        assert.equal('Нашлось -10', plural.verb(-10, one, several, many));
+        assert.equal('Нашлось -8000', plural.verb(-8000, one, several, many));
     });
 });

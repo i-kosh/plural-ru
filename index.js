@@ -6,6 +6,7 @@ function getPluralNoun(num) {
     var forms = slice.call(arguments, 1);
 
     var str;
+    var absNum = Math.abs(num)
 
     switch (forms.length) {
         case 1:
@@ -13,11 +14,11 @@ function getPluralNoun(num) {
             break;
 
         case 2:
-            str = num > 1 ? forms[1] : forms[0];
+            str = absNum > 1 ? forms[1] : forms[0];
             break;
 
         default:
-            str = forms[getNounPluralForm(num)];
+            str = forms[getNounPluralForm(absNum)];
             break;
     }
 
@@ -26,7 +27,8 @@ function getPluralNoun(num) {
 
 function getPluralVerb(num) {
     var forms = slice.call(arguments, 1);
-    var str = forms[getVerbPluralForm(num)];
+    var absNum = Math.abs(num)
+    var str = forms[getVerbPluralForm(absNum)];
 
     return str.replace(/%d/g, num);
 }
